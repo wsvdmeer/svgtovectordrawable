@@ -48,19 +48,33 @@ function previewFile(file, i) {
 
         //Create element
         let li = document.createElement('li');
+    
+
         let img = document.createElement('img');
-        let link = document.createElement('a');
-        img.src = reader.result;
         li.appendChild(img);
+        img.src = reader.result;
+
+        let title = document.createElement('span');
+        title.classList.add("title");
+        title.innerHTML = file.name;
+        li.appendChild(title);
+
+        let error = document.createElement('span');
+        error.classList.add("error");
+        li.appendChild(error);
+
+        let link = document.createElement('a');
+        link.classList.add("link");
         li.appendChild(link);
-        document.getElementById('gallery').appendChild(li)
+       
+        document.getElementById('results').appendChild(li)
         let encoded = reader.result.toString().replace(/^data:(.*,)?/, '');
         if ((encoded.length % 4) > 0) {
             encoded += '='.repeat(4 - (encoded.length % 4));
         }
         //decode file
         var decode = window.atob(encoded);
-        sendSvg(file.name, link,decode, i);
+        sendSvg(file.name, li,decode, i);
 
 
     }
@@ -68,7 +82,9 @@ function previewFile(file, i) {
 
 
 
-function sendSvg(fileName, link, svg, i) {
+function sendSvg(fileName, li, svg, i) {
+    let link = li.getElementsByClassName('link')[0];
+    let error = li.getElementsByClassName('error')[0];
     var url = '/upload'
     var xhr = new XMLHttpRequest()
     xhr.open('POST', url, true)
@@ -86,13 +102,20 @@ function sendSvg(fileName, link, svg, i) {
     })
     xhr.addEventListener('load',function (e){
         console.log('load')
-        let xml = e.target.response;
-        let name = fileName.replace('svg','xml');
-        
-        //CREATE DOWNLOAD
-        link.setAttribute('href', 'data:text/xml;charset=utf-8,' + encodeURIComponent(xml));
-        link.setAttribute('download', name);
-        link.innerHTML = name;
+        console.log(e);
+        if(xhr.status == 200){
+            let xml = e.target.response;
+            console.log(xml);
+            let name = fileName.replace('svg','xml');
+            
+            //CREATE DOWNLOAD
+          
+            link.setAttribute('data:text/xml;charset=utf-8,' + encodeURIComponent(xml));
+            link.setAttribute('download', name);
+            link.innerHTML = "Download";
+        }else{
+            error.innerHTML = e.target.response;
+        }
     })
    
     var data = JSON.stringify({ 'svg': svg});

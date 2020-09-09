@@ -30,6 +30,9 @@ app.post('/upload', function (req, res) {
         svg2vectordrawable(svg.toString()).then(xmlCode => {
             res.set('Content-Type', 'text/xml');
             res.send(xmlCode);
+        }).catch(error =>{
+            console.log("error : "+error);
+            res.status(500).send('Error! 😱 ' + error);
         });
     }
 });
