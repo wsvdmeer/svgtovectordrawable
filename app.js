@@ -21,13 +21,11 @@ app.get('/', function (req, res) {
 
 });
 app.listen(port, function () {
-    console.log('Converter running on port 3000');
+    console.log('Converter running on :'+port);
 });
 
 app.post('/upload', function (req, res) {
-   
     const svg = req.body.svg;
-    console.log('svg : '+svg);
     if (svg) {
         svg2vectordrawable(svg.toString()).then(xmlCode => {
             res.set('Content-Type', 'text/xml');
