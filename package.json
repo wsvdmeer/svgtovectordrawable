@@ -4,7 +4,7 @@
   "description": "svg to vector drawable converter",
   "main": "app.js",
   "scripts": {
-    "start": "app.js"
+    "start": "node app.js"
   },
   "keywords": [
     "svg",
