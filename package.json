@@ -17,5 +17,8 @@
     "express": "^4.17.1",
     "nodemon": "^2.0.4",
     "svg2vectordrawable": "^2.6.25"
+  },
+  "engines": {
+    "node": "10.x"
   }
 }
