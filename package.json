@@ -1,0 +1,21 @@
+{
+  "name": "svgconverter",
+  "version": "1.0.0",
+  "description": "svg to vector drawable converter",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "svg",
+    "vectordrawable",
+    "converter"
+  ],
+  "author": "Wiebe Steven van der Meer",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.4",
+    "svg2vectordrawable": "^2.6.25"
+  }
+}

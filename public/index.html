@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>SvgConverter</title>
+  <style>
+    body,html {
+      width:100%;
+      height:100%;
+      font-family: "Arial";
+    }
+    *{
+      padding:0;
+      margin:0;
+      list-style: none;;
+    }
+
+    
+    #drop-area {
+      width:100%;
+      height:100%;
+      display:block;
+      background-color:#fff;
+    }
+
+    #drop-area.highlight {
+      background-color:blue;
+    }
+
+    p {
+      margin-top: 0;
+    }
+
+    .form {
+      
+    }
+
+    #gallery {
+      list-style:none;
+    }
+
+    #gallery li{
+      list-style: none;
+      float:left;
+      width:100%;
+      height:50px;
+      border:1px solid #eee;
+    }
+
+    #gallery li img {
+      width: 50px;
+      height:50px;
+      background-color:red;
+      float:left;
+    }
+
+    #gallery li a{
+      float:left;
+    }
+
+
+
+    .button {
+      display: inline-block;
+      padding: 10px;
+      background: #aaa;
+      cursor: pointer;
+      border-radius: 3px;
+    
+    }
+
+    .button:hover {
+      background: #ddd;
+    }
+
+    #fileElem {
+      display: none;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div id="drop-area">
+    <form class="form">
+      <p>Upload multiple svg files with the file dialog or by dragging and dropping images this page</p>
+      <input type="file" id="fileElem" multiple accept=".svg" onchange="handleFiles(this.files)">
+      <label class="button" for="fileElem">Select some svg files</label>
+    </form>
+    <ul id="gallery"></ul>
+    <ul id="results"></ul>
+  </div>
+
+ 
+
+</body>
+<script src="client.js"></script>
+</html>
