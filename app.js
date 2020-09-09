@@ -5,7 +5,8 @@ var express = require('express');
 var svg2vectordrawable = require('svg2vectordrawable');
 
 //bodyparser
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
+var port = process.env.PORT || 8080;
 
 //setup public
 var app = express();
@@ -19,7 +20,7 @@ app.get('/', function (req, res) {
     res.sendFile('public/index.html');
 
 });
-app.listen(3000, function () {
+app.listen(port, function () {
     console.log('Converter running on port 3000');
 });
 
