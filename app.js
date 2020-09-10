@@ -31,7 +31,6 @@ app.post('/upload', function (req, res) {
             res.set('Content-Type', 'text/xml');
             res.send(xmlCode);
         }).catch(error =>{
-            console.log("error : "+error);
             res.status(500).send('Error! 😱 ' + error);
         });
     }

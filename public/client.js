@@ -110,7 +110,7 @@ function sendSvg(fileName, li, svg, i) {
             
             //CREATE DOWNLOAD
           
-            link.setAttribute('data:text/xml;charset=utf-8,' + encodeURIComponent(xml));
+            link.setAttribute('href','data:text/xml;charset=utf-8,' + encodeURIComponent(xml));
             link.setAttribute('download', name);
             link.innerHTML = "Download";
         }else{
